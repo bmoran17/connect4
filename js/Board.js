@@ -31,8 +31,6 @@ class Board {
  * Call the drawSVGSpace method on each space
  */
   drawHTMLBoard() {
-    // 
-    // ca
     for (let column of this.spaces) {
       for(let space of column) {
         space.drawSVGSpace()

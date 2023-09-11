@@ -11,3 +11,10 @@ btn.addEventListener('click', () => {
   btn.style.display = 'none';
   document.getElementById('play-area').style.opacity = '1';
 });
+
+/** 
+ * Listen for keyboard presses
+ */
+document.addEventListener('keydown', (e) => {
+  game.handleKeydown(e.key);
+});

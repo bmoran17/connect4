@@ -35,4 +35,45 @@ class Game {
     this.activePlayer.activeToken.drawHTMLToken()
     this.ready = true;
   }
+
+  /**
+ * Branches code, depending on what key player presses
+ * @param  string the keydown pressed - 
+ */
+  handleKeydown(keydown) {
+    // current active token to play with
+    let token = this.activePlayer.activeToken;
+
+    // check game is ready
+    if (this.ready) {
+      if (keydown === "ArrowLeft") {
+        token.moveLeft()
+      } else if (keydown === "ArrowRight") {
+        token.moveRight(this.board.columns)
+      } else if (keydown === "ArrowDown") {
+        // token is dropped
+      }
+    }
+  }
+
+/**
+ * 
+ */
+  playToken() {
+    let spaces = this.board.spaces;
+    let activeToken = this.activePlayer.activeToken;
+    let targetColumn = spaces[activeToken.columnLocation];
+    let targetSpace =  null;
+
+    for (let space of targetColumn) {
+      if (space.token === null) {
+        targetSpace = space;
+      }
+    }
+
+    if (targetSpace !== null) {
+      game.ready = false;
+      activeToken.drop(targetSpace);
+    }
+  }
 }
